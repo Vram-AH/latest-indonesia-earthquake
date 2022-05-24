@@ -17,7 +17,7 @@ setuptools.setup(
                 " and Geophysical Agency",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/Vram-AH/latest-indonesia-earthquake",
     project_urls={
         "Website": "https://github.com/Vram-AH/latest-indonesia-earthquake",
     },
