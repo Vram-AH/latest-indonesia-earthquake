@@ -4,16 +4,40 @@ from bs4 import BeautifulSoup
 """
 Method = fungsi
 Field / Atribute = variable
+Constructor = method yang dipanggil pertama kali saat object diciptakan yang digunakan untuk mendeklarasikan semua field pada class ini
 """
 
 
-class LatestEarthquake:
-    def __init__(self, url):
-        self.description = 'To get the latest earthquake in indonesia from BMKG.go.id'
+class Disaster:
+    def __init__(self, url, description):
+        self.description = description
         self.result = None
         self.url = url
 
-    def ekstraksi_data(self):
+    def show_description(self):
+        print(self.description)
+
+    def scraping_data(self):
+        print('scraping_data not yet implemented')
+
+    def tampilkan_data(self):
+        print('tampilkan_data not yet implemented')
+
+    def run(self):
+        self.scraping_data()
+        self.tampilkan_data()
+
+
+class LatestFlood(Disaster):
+    def __init__(self, url):
+        super(LatestFlood, self).__init__(url, '\nNOT YET IMPLEMENTED, but it should return last flood in Indonesia')
+
+
+class LatestEarthquake(Disaster):
+    def __init__(self, url):
+        super(LatestEarthquake, self).__init__(url, 'To get the latest earthquake in indonesia from BMKG.go.id')
+
+    def scraping_data(self):
         """
         Tanggal: 12 Mei 2022
         Waktu: 14:22:12 WIB
@@ -87,14 +111,12 @@ class LatestEarthquake:
         print(f"Lokasi {self.result['lokasi']}")
         print(f"Dirasakan {self.result['dirasakan']}")
 
-    def run(self):
-        self.ekstraksi_data()
-        self.tampilkan_data()
-
 
 if __name__ == '__main__':
     indonesian_earthquake = LatestEarthquake('https://bmkg.go.id')
-    print('Deskripsi package', indonesian_earthquake.description)
+    indonesian_earthquake.show_description()
     indonesian_earthquake.run()
-    # indonesian_earthquake.ekstraksi_data()
-    # indonesian_earthquake.tampilkan_data()
+
+    indonesian_flood = LatestFlood('NOT YET')
+    indonesian_flood.show_description()
+    indonesian_flood.run()
